@@ -24,7 +24,7 @@ namespace Lab4_3_AspNetMVC_BlindDating.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=BlindDating;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=BlindDating;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
     }

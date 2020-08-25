@@ -118,13 +118,14 @@ namespace Lab4_3_AspNetMVC_BlindDating.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Age,Gender,Bio,UserAccountId, DisplayName")] DatingProfile datingProfile, 
             IFormFile FilePhoto)
         {
-            if(FilePhoto.Length > 0)
+            if (FilePhoto.Length > 0)
             {
-                string photoPath = _webroot.WebRootPath + "\\userPhoto\\";
+                string photoPath = _webroot.WebRootPath + "\\userPhotos\\";
                 var fileName = Path.GetFileName(FilePhoto.FileName);
 
                 using (var stream = System.IO.File.Create(photoPath + fileName))

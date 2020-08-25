@@ -34,8 +34,7 @@ namespace Lab4_3_AspNetMVC_BlindDating.Controllers
 
             if (result.Succeeded)
             {
-                _userManager.AddToRoleAsync(newUser,
-                    "NormalUser").Wait();
+                _userManager.AddToRoleAsync(newUser, "NormalUser").Wait();
 
                 _signInManager.SignInAsync(newUser, false).Wait();
             }

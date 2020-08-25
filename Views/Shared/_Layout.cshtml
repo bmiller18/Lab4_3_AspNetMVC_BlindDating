@@ -26,13 +26,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Lab4_3_AspNetMVC_BlindDating</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BlindDating.com</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="DatingProfiles" asp-action="ProfileInfo">My Dating Profile</a></li>
+                    <li><a asp-area="" asp-controller="DatingProfiles" asp-action="Browse">Browse For Love</a></li>
+                    <li><a asp-area="" asp-controller="Messages" asp-action="Inbox">Inbox</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
