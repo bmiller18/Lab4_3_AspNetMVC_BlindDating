@@ -27,7 +27,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Bio)
             </th>
-            @*Hide for this page. Only Browsing is allowed...added by th 08192020*@
+            @*Hide for this page. Only Browsing is allowed*@
             @*<th>
                     @Html.DisplayNameFor(model => model.UserAccountId)
                 </th>*@
@@ -53,22 +53,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Bio)
                 </td>
-                @*Hide for this page. Only Browsing is allowed...added by th 08192020*@
+                @*Hide for this page. Only Browsing is allowed*@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.UserAccountId)
                     </td>*@
                 <td>
                     @*This view was created after the Scaffolding. It is created from the Index view with the following changes.*@
-                    @*All authorized users can Browse but not all can Edit. This is available on Index View...added by th 08192020*@
+                    @*All authorized users can Browse but not all can Edit. This is available on Index View*@
                     @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-
-                    @*Allow all authorized users can Show...added by th 08192020*@
+                    2
+                    @*Allow all authorized users can Show.*@
                     <a asp-action="Show" asp-route-id="@item.Id">Show</a> @*|*@
 
-                    @*Access if for Admin only...added by th 08192020*@
+                    @*Access if for Admin only*@
                     @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
 
-                    @*All authorized users can Browse but not all can Delete. This is available on Index View...added by th 08192020*@
+                    @*All authorized users can Browse but not all can Delete. This is available on Index View*@
                     @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
                 </td>
             </tr>

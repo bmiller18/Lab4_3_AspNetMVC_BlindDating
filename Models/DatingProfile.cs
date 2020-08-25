@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lab4_3_AspNetMVC_BlindDating.Models
 {
@@ -18,6 +19,7 @@ namespace Lab4_3_AspNetMVC_BlindDating.Models
         public string Gender { get; set; }
         public string Bio { get; set; }
         public string UserAccountId { get; set; }
+        [Required]
         public string DisplayName { get; set; }
         public string PhotoPath { get; set; }
 
