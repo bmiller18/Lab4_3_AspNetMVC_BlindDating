@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Lab4_3_AspNetMVC_BlindDating.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Lab4_3_AspNetMVC_BlindDating.Models;
 
 namespace Lab4_3_AspNetMVC_BlindDating
 {
@@ -34,17 +35,32 @@ namespace Lab4_3_AspNetMVC_BlindDating
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+
+            ////services.AddDbContext<ApplicationDbContext>(options =>
+            ////    options.UseSqlServer(
+            ////        Configuration.GetConnectionString("Dating")));
+            ////services.AddDefaultIdentity<IdentityUser>()
+            ////    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<BlindDatingContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("Dating")));
+            /////services.AddDefaultIdentity<IdentityUser>() ///ALREADY HAVE UP TOP....08182020
+            /////   .AddEntityFrameworkStores<BlindDatingContext>();
+            services.AddDbContext<SecurityContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("Dating")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<SecurityContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +85,9 @@ namespace Lab4_3_AspNetMVC_BlindDating
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SetupSecurity.SeedRoles(roleManager);
+            SetupSecurity.SeedUsers(userManager);
         }
     }
 }
